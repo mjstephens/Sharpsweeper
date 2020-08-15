@@ -2,7 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharpsweeper", "Sharpsweeper\Sharpsweeper.csproj", "{BCDD709D-9CBE-4D7E-804F-254DF75AF8C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpsweeperTests", "SharpsweeperTests\SharpsweeperTests.csproj", "{CC38EE94-16E9-4787-8C12-F68F4446ACCA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{404024DC-1630-4606-84EA-6CE3547E1467}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1E354142-B763-41CF-B436-07F5AB4022FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpsweeperTests", "SharpsweeperTests\SharpsweeperTests.csproj", "{56229B2D-73C7-42C8-9880-A8FB77B4BDC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +18,13 @@ Global
 		{BCDD709D-9CBE-4D7E-804F-254DF75AF8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCDD709D-9CBE-4D7E-804F-254DF75AF8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCDD709D-9CBE-4D7E-804F-254DF75AF8C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC38EE94-16E9-4787-8C12-F68F4446ACCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC38EE94-16E9-4787-8C12-F68F4446ACCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC38EE94-16E9-4787-8C12-F68F4446ACCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC38EE94-16E9-4787-8C12-F68F4446ACCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56229B2D-73C7-42C8-9880-A8FB77B4BDC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56229B2D-73C7-42C8-9880-A8FB77B4BDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56229B2D-73C7-42C8-9880-A8FB77B4BDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56229B2D-73C7-42C8-9880-A8FB77B4BDC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BCDD709D-9CBE-4D7E-804F-254DF75AF8C5} = {404024DC-1630-4606-84EA-6CE3547E1467}
+		{56229B2D-73C7-42C8-9880-A8FB77B4BDC3} = {1E354142-B763-41CF-B436-07F5AB4022FA}
 	EndGlobalSection
 EndGlobal
