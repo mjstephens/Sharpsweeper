@@ -13,7 +13,7 @@ namespace Sharpsweeper.Game
         public IBoardSimulation board { get; }
         public GameState state { get; private set; }
 
-        private IGameTimeSource time { get; }
+        private readonly IGameTimeSource _time;
         private readonly IGameView _view;
 
         #endregion Properties
@@ -45,12 +45,12 @@ namespace Sharpsweeper.Game
                 boardSeed);
 
             // Create the game time component
-            time = new GameTime(this);
+            _time = new GameTime(this);
             
             // Set state view
             state = GameState.Waiting;
             _view = view;
-            _view.GameSet(GetGameConfigurationData(boardData, board));
+            _view?.GameSet(GetGameConfigurationData(boardData, board));
         }
 
         private static GameConfigurationData GetGameConfigurationData(BoardData bd, IBoardSimulation board)
@@ -72,7 +72,7 @@ namespace Sharpsweeper.Game
         public void OnGameInput()
         {
             // We wait to start the game timer until the user inputs
-            time.BeginGameTimer();
+            _time.BeginGameTimer();
         }
 
         /// <summary>
@@ -81,10 +81,10 @@ namespace Sharpsweeper.Game
         public void UpdateGame()
         {
             // Update time elapsed
-            time.UpdateGameTimeElapsed();
+            _time.UpdateGameTimeElapsed();
             
             // Push changes to view
-            _view.UpdateGame(currentData);
+            _view?.UpdateGame(currentData);
         }
 
         #endregion Update
@@ -107,14 +107,14 @@ namespace Sharpsweeper.Game
         void IGameSimulation.GameLost()
         {
             state = GameState.Lose;
-            time.EndGameTimer();
+            _time.EndGameTimer();
             OnGameEnd(false);
         }
 
         void IGameSimulation.GameWon()
         {
             state = GameState.Win;
-            time.EndGameTimer();
+            _time.EndGameTimer();
             OnGameEnd(true);
         }
 
@@ -137,7 +137,7 @@ namespace Sharpsweeper.Game
                 bombsFlagged = board.flaggedBombs,
                 percentageFlagged = board.flaggedBombs / (float)board.totalBombs
             };
-            _view.OnGameFinished(data);
+            _view?.OnGameFinished(data);
         }
 
         #endregion End Game

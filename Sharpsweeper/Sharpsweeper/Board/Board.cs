@@ -8,7 +8,7 @@ namespace Sharpsweeper.Board
     /// <summary>
     /// Holds information and logic relating to the minesweeper board (grid of tiles).
     /// </summary>
-    public class Board : IBoardSimulation
+    public class Board : IBoardSimulation, IEquatable<Board>
     {
         #region Properties
         
@@ -193,5 +193,30 @@ namespace Sharpsweeper.Board
         }
 
         #endregion Flag
+
+
+        #region Equality Comparison
+
+        public bool Equals(Board other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(boardSize, other.boardSize) && flagsRemaining == other.flagsRemaining && totalBombs == other.totalBombs;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Board) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_game, tiles, boardSize, flagsRemaining, totalBombs);
+        }
+
+        #endregion Equality Comparison
     }
 }
