@@ -5,7 +5,44 @@ Pure C# implementation of a basic minesweeper game.
 
 ---
 
-To use, you need to create an instance of the Game class and pass in a valid IGameView (implemented in the client) and BoardData, which defines the size of the board as well as the difficulty. Use that data to construct the board/view in the client. Make sure tile objects implement the ITIleView interface to send game events (such as selecting/flagging tiles) back to the simulation.
+USAGE:
 
-UNITY IMPLEMENTATION:
+Create an instance of a Game, passing in an IGameView reference and a BoardData struct. You can then use the board data created in the Game constructor to instantiate/create the view for the board and tiles. Make sure the tile objects have a way to respond to input via the ITileView interface.
+
+```
+// Required for game construction
+public IGameView view;
+public BoardData data;
+public int seed;
+
+// Create game instance
+IGameSimulation myGame = new Sharpsweeper.Game.Game(
+  view,
+  data,
+  seed);
+  
+// ...
+// Construct board/tiles view objects here
+// Use myGame.board for access to parameters/board tiles
+// ...
+
+// Start the game
+myGame.OnClientGameBegin();
+```
+
+Your tile objects should be able to respond to user input; by implementing the ITileView interface, they can report player actions to the simulation.
+
+You can update the game simulation from the client through the IGameSimulation.OnClientGameUpdate() method. Do this every frame/tick to update time elapsed and trigger any view changes.
+
+You can listen to simulation updates in the client through the IGameView.OnGameUpdate(GameProgressData data) method. Do this to respond to simulation changes in the view.
+
+When the game is won or lost, the IGameView.OnGameFinished(GameSummaryData data) method will be called from the simulation. Use the data parameter to display scores, check for new records, etc.
+
+See the implementations below for practical examples.
+
+---
+
+IMPLEMENTATIONS:
+
+UNITY
 https://github.com/mjstephens/Unity_Minesweeper
