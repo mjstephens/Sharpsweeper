@@ -13,7 +13,7 @@ Create an instance of a Game, passing in an IGameView reference and a BoardData 
 // Required for game construction
 IGameView view;
 BoardData data;
-int levelSeed seed;
+int seed;
 
 // Create game instance
 IGameSimulation myGame = new Sharpsweeper.Game.Game(
