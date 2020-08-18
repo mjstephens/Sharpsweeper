@@ -52,7 +52,7 @@ namespace Sharpsweeper.Game
             _view = view;
             
             // Tell the view we're ready 2 rumble
-            _view.GameSet(GetGameConfigurationData(boardData, board));
+            _view.OnGameSet(GetGameConfigurationData(boardData, board));
         }
 
         private static GameConfigurationData GetGameConfigurationData(BoardData bd, IBoardSimulation board)
@@ -80,13 +80,13 @@ namespace Sharpsweeper.Game
         /// <summary>
         /// Called from client when the view needs an update on the game state
         /// </summary>
-        public void UpdateGame()
+        public void OnClientGameUpdate()
         {
             // Update time elapsed
             _time.UpdateGameTimeElapsed();
             
             // Push changes to view
-            _view?.UpdateGame(currentData);
+            _view?.OnGameUpdated(currentData);
         }
 
         #endregion Update
@@ -94,14 +94,13 @@ namespace Sharpsweeper.Game
 
         #region State
 
-        void IGameSimulation.BeginGame()
+        void IGameSimulation.OnClientGameBegin()
         {
-            //
             currentData = new GameProgressData
             {
                 flagsRemaining = board.flagsRemaining
             };
-            UpdateGame();
+            OnClientGameUpdate();
             
             state = GameState.InProgress;
         }

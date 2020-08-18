@@ -7,8 +7,8 @@ namespace Sharpsweeper.Game.View
     /// </summary>
     public interface IGameView
     {
-        void GameSet(GameConfigurationData data);
-        void UpdateGame(GameProgressData data);
+        void OnGameSet(GameConfigurationData data);
+        void OnGameUpdated(GameProgressData data);
         void OnGameFinished(GameSummaryData data);
     }
 }

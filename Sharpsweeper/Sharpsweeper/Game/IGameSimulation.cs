@@ -16,8 +16,9 @@ namespace Sharpsweeper.Game
         /// <summary>
         /// Tells the game to update/send update to view.
         /// </summary>
-        void UpdateGame();
-        void BeginGame();
+        void OnClientGameUpdate();
+        void OnClientGameBegin();
+        
         void GameLost();
         void GameWon();
 
