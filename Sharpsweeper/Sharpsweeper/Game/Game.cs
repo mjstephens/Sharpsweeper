@@ -50,7 +50,9 @@ namespace Sharpsweeper.Game
             // Set state view
             state = GameState.Waiting;
             _view = view;
-            _view?.GameSet(GetGameConfigurationData(boardData, board));
+            
+            // Tell the view we're ready 2 rumble
+            _view.GameSet(GetGameConfigurationData(boardData, board));
         }
 
         private static GameConfigurationData GetGameConfigurationData(BoardData bd, IBoardSimulation board)
