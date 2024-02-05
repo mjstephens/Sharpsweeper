@@ -3,7 +3,7 @@ C# implementation of a basic minesweeper game.
 
 ---
 
-USAGE:
+## Usage
 
 Create an instance of a Game, passing in an IGameView reference and a BoardData struct. You can then use the board data created in the Game constructor to instantiate/create the view for the board and tiles. Make sure the tile objects have a way to respond to input via the ITileView interface.
 
@@ -40,7 +40,7 @@ See the implementations below for practical examples.
 
 ---
 
-IMPLEMENTATIONS:
+## Implementations
 
 UNITY
 https://github.com/mjstephens/Unity_Minesweeper
