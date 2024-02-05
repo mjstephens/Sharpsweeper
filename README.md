@@ -1,7 +1,5 @@
 # Sharpsweeper
-Minesweeper in C#
-
-Pure C# implementation of a basic minesweeper game.
+C# implementation of a basic minesweeper game.
 
 ---
 
